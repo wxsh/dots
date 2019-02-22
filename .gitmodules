@@ -1,3 +1,12 @@
 [submodule "zsh/LS_COLORS"]
 	path = zsh/LS_COLORS
 	url = https://github.com/trapd00r/LS_COLORS
+[submodule "zsh/fasthigh"]
+	path = zsh/fasthigh
+	url = https://github.com/zdharma/fast-syntax-highlighting
+[submodule "zsh/completions"]
+	path = zsh/completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule "zsh/suggestions"]
+	path = zsh/suggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions

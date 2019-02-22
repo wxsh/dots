@@ -10,7 +10,12 @@
 autoload -U colors && colors
 autoload -U compinit && compinit
 autoload -U vcs_info && vcs_info
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+
+# source plugins
+source $HOME/.zsh/fasthigh/fast-syntax-highlighting.plugin.zsh
+source $HOME/.zsh/completions/zsh-completions.plugin.zsh
+source $HOME/.zsh/suggestions/zsh-autosuggestions.plugin.zsh
 
 zmodload zsh/complist
 zmodload zsh/terminfo
