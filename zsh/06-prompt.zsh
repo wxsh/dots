@@ -33,9 +33,9 @@ ${EXIT} %F{202}»%f "
 
   if [[ "${vcs_info_msg_0_}" == "" ]]; then
    PROMPT="$PRMPT"
-   RPROMPT=""
+   RPROMPT="%T"
   else
    PROMPT="$PRMPT"
-   RPROMPT="${vcs_info_msg_0_}"
+   RPROMPT="${vcs_info_msg_0_} %T"
   fi
 }

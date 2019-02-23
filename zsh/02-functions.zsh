@@ -101,15 +101,6 @@ ripdatshit()
 } # }}}
 
 # {{{ Create ISO from device or directory
-mkiso()
-{
-	case $1 in
-		/dev/*)
-			dd if=$1 of=$2 ;;
-		*)
-			mkisofs -o $2 $1 ;;
-	esac
-} # }}}
 
 # {{{ Setup empty github repo
 mkgit() {
@@ -119,7 +110,7 @@ mkgit() {
 	touch README.markdown
 	git add README.markdown
 	git commit -m 'inital setup - automated'
-	git remote add origin git@github.com:crshd/$1.git
+	git remote add origin git@github.com:wxsh/$1.git
 	git push origin master
 } # }}}
 
