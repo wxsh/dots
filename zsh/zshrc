@@ -43,3 +43,5 @@ done
 
 eval $( dircolors -b $HOME/.zsh/LS_COLORS/LS_COLORS )
 export LS_COLORS
+
+eval $(thefuck --alias)
