@@ -16,6 +16,7 @@ autoload -U vcs_info && vcs_info
 source $HOME/.zsh/fasthigh/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/completions/zsh-completions.plugin.zsh
 source $HOME/.zsh/suggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/.zsh/k/k.plugin.zsh
 
 zmodload zsh/complist
 zmodload zsh/terminfo
