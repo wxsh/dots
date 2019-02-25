@@ -10,27 +10,6 @@
 [submodule "zsh/suggestions"]
 	path = zsh/suggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "vim/bundle/vim-polyglot"]
-	path = vim/bundle/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot
-[submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-[submodule "vim/bundle/vim-airline-themes"]
-	path = vim/bundle/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "vim/bundle/minimalist"]
-	path = vim/bundle/minimalist
-	url = https://github.com/dikiaap/minimalist
-[submodule "vim/bundle/youcompleteme"]
-	path = vim/bundle/youcompleteme
-	url = https://github.com/valloric/youcompleteme
-[submodule "vim/bundle/vim-latex-live-preview"]
-	path = vim/bundle/vim-latex-live-preview
-	url = https://github.com/xuhdev/vim-latex-live-preview
 [submodule "zsh/k"]
 	path = zsh/k
 	url = https://github.com/supercrabtree/k
-[submodule "vim/bundle/omnisharp-vim"]
-	path = vim/bundle/omnisharp-vim
-	url = https://github.com/OmniSharp/omnisharp-vim
