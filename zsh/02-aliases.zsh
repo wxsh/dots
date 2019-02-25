@@ -87,5 +87,5 @@ alias df='df -h | grep sd |\
 	sed -e "s_9[0-9]%_\x1b[31m&\x1b[0m_" |\
 	sed -e "s_/mnt/[-_A-Za-z0-9]*_\x1b[34;1m&\x1b[0m_"'
 
-alias duch='du -ch | grep insgesamt |\
-	sed -e "s_[0-9]*,[0-9]*[B|G|K|M|T]_\x1b[32m&\x1b[0m_"'
+alias c='pygmentize -g -O style=monokai,linenos=1'
+alias cats='highlight -O ansi --force'

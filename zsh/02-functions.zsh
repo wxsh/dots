@@ -26,7 +26,6 @@ cdl() { cd $@; ls++ }
 d() { ($1 &) }
 zsh_stats() { history | awk '{print $2}' | sort | uniq -c | sort -rn | head }
 du1() { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
-epoch() { print $(( `echo $1 | cut -b 1-2` * 3600 + `echo $1 | cut -b 4-5` * 60 + `echo $1 | cut -b 7-8` )) }
 # }}}
 
 # {{{ Create ZSH named directory
@@ -44,63 +43,6 @@ mostused() {
 	tail -25 |
 	tac
 } # }}}
-
-# {{{ FFMPEG stuffs
-
-# Split Video
-ffmpeg_splitvid()
-{
-	local t=$(epoch `ffprobe $1 2>&1 | grep Duration | cut -b 13-20`)
-	local first=$(( $t / 3 ))
-	local second=$(( $first * 2 ))
-	local duration=$(( $first + 30 ))
-
-	ffmpeg -i $1 -ss 0 -t $duration -vcodec copy -sameq -acodec copy -async 100 -threads 0 ${1%.*}.part1.avi
-	ffmpeg -i $1 -ss $first -t $duration -vcodec copy -sameq -acodec copy -async 100 -threads 0 ${1%.*}.part2.avi
-	ffmpeg -i $1 -ss $second -t $duration -vcodec copy -sameq -acodec copy -async 100 -threads 0 ${1%.*}.part3.avi
-}
-
-ffmpeg_bframes()
-{
-	ffmpeg -i $1 -vcodec copy -sameq -acodec libmp3lame -ab 128k -ar 48000 -ac 2 -threads 0 ${1%.*}.fix.avi
-}
-
-# Convert to x264 (stupid railscasts with their stupid .mov that won't play in mplayer)
-ffmpeg_x264() {
-	ffmpeg -i $1 -acodec aac -strict experimental -ab 96k -vcodec libx264 -vpre slow -crf 22 -threads 0 -f matroska ${1%.*}.mkv
-} 
-
-# Rip Audio as MP3
-ffmpeg_mp3() {
-	ffmpeg -i $1 -acodec libmp3lame -sameq -threads 0 ${1%.*}.mp3
-}
-
-# Convert anything to iPhone and move to LAMP for streaming
-ffmpeg_iphone()
-{
-	ffmpeg -i $1 -acodec libfaac -ab 128k -vcodec libx264 -vpre ipod640 -s 480x320 -r 29 -threads 0 ${1%.*}.mp4
-	mv ${1%.*}.mp4 ~/www/iphone/
-} # }}}
-
-# {{{ Rip Audio CDs to MP3
-ripdatshit()
-{
-	echo "MP3 VBR quality setting: [0-9]"
-	read $q
-	mkdir $HOME/tmp/rip
-	cd $HOME/tmp/rip
-	cdparanoia -B
-	for i in *.wav; do
-		lame -V $q $i mp3/${i%.*.*}.mp3
-	done
-	echo "Tag mp3 files with Easytag? [y/n]"
-	read $yn
-	if [[ "$yn" == "y" ]]; then
-		easytag $HOME/tmp/rip
-	fi
-} # }}}
-
-# {{{ Create ISO from device or directory
 
 # {{{ Setup empty github repo
 mkgit() {
@@ -160,85 +102,3 @@ searchfile() {ls /media/data/Filez | grep $1}
 getfile() {cat /media/data/Filez/$1 | xclip}
 losefile() {rm /media/data/Filez/$1}
 # }}}
-
-# {{{ Functions for more comfortable use of DropboxCLI
-# requires:
-# dropbox-cli
-# cush
-# xclip
-# ZSH named directory "~Dropbox"
-
-dbheader() {
-	echo -e " Dropbox - $(dropbox status)
-======================================================"
-}
-
-dbshorturl() {
-	url=$(cush -o -- $(dropbox puburl ~Dropbox/Public/$1))
-	echo -n $url | xclip
-	echo $url
-}
-
-dbup() {
-	dbheader
-	cp $1 /media/data/Dropbox/Public
-	dbshorturl $1
-}
-
-dbls() {
-	dbheader
-	dropbox ls /media/data/Dropbox/$1
-}
-
-dburl() {
-	dbheader
-	dbshorturl $1
-}
-# }}}
-
-# {{{ Function to switch packer/pacman-color, depending on options used
-pac() {
-	case $1 in
-
-		-S | -Ss | -Ssq | -Si | -G )
-			sudo packer $@ ;;
-
-		-Su | -Syu )
-			sudo packer $@
-			echo "" > $HOME/.pacmanupdates ;;
-
-		* )
-			sudo pacman-color $@ ;;
-
-	esac
-} # }}}
-
-port() {
-	case $1 in
-		install )
-			shift
-			prt-get depinst $@ ;;
-		remove | lock | unlock )
-			sudo prt-get $@ ;;
-		new )
-			mkdir $HOME/ports/$2
-			chmod 777 $HOME/ports/$2
-			cd $HOME/ports/$2
-			touch Pkgfile ;;
-		fetchup )
-			sudo ports -u
-			ports -d ;;
-		list )
-			ports -l ;;
-		pre-install )
-			sudo sh $(prt-get path $2)/pre-install ;;
-		post-install )
-			sudo sh $(prt-get path $2)/post-install ;;
-		* )
-			prt-get $@ ;;
-	esac
-}
-
-rc.d() {
-	sudo /etc/rc.d/$@
-}

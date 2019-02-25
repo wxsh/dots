@@ -5,5 +5,5 @@ let g:airline_theme='zenburn'
 let g:airline_powerline_fonts = 0
 let g:airline#extensons#tabline#enabled = 1
 set t_Co=256
-colorscheme minimalist
+colorscheme getfresh
 set encoding=utf-8
