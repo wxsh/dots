@@ -8,7 +8,7 @@ set nocompatible               " be iMproved
 
 " Vundle {{{
   filetype off
-  set rtp+=~/.vim/bundle/Vundle.vim/
+  set rtp+=~/.vim/bundle/vundle/
   call vundle#begin()
 
   " let Vundle manage Vundle
@@ -39,7 +39,9 @@ set nocompatible               " be iMproved
   " Bundle 'fholgado/minibufexpl.vim'
   Bundle 'shemerey/vim-project'
   " Bundle 'Twinside/vim-codeoverview'
-
+	Bundle 'sheerun/vim-polyglot'
+	Bundle 'valloric/youcompleteme'
+	Bundle 'OmniSharp/omnisharp-vim'
   " vim-scripts repos
 
   " non github repos

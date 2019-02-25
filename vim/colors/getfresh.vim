@@ -72,7 +72,7 @@ exe 'hi Search                                            ctermbg=14 guibg='.Dar
 exe 'hi VertSplit                 guifg='.SplitFG.'       guibg='.SplitBG
 exe 'hi Visual                    ctermbg=14                         guibg='.DarkCyan
 exe 'hi Folded                    ctermfg=7 guifg='.FoldFG.'    ctermbg=8    guibg='.FoldLineBG
-exe 'hi FoldColumn                ctermfg=14 guifg='.FoldFG.'        guibg='.FoldColBG
+exe 'hi FoldColumn                ctermfg=14 ctermbg=NONE guifg='.FoldFG.'        guibg='.FoldColBG
 exe 'hi Directory                 ctermfg=2 guifg='.LightGreen
 exe 'hi Pmenu                     ctermbg=8 guifg='.NormalFG.'      guibg='.LightGray
 exe 'hi PmenuSel                  ctermbg=8 guifg='.DarkGray.'      guibg='.LightGreen
