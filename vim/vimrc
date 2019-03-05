@@ -42,7 +42,10 @@ set nocompatible               " be iMproved
 	Bundle 'sheerun/vim-polyglot'
 	Bundle 'valloric/youcompleteme'
 	Bundle 'OmniSharp/omnisharp-vim'
-  " vim-scripts repos
+	" Bundle 'SirVer/ultisnips'
+	Bundle 'sudar/vim-arduino-snippets'
+	"Bundle 'honza/vim-snippets' 
+ " vim-scripts repos
 
   " non github repos
 
@@ -367,7 +370,8 @@ set nocompatible               " be iMproved
 
   let NERDTreeChDirMode = 2
   let NERDTreeShowBookmarks = 1
-" }}}
+" }}}i
+
 " Wrapping {{{
   set linebreak
   set showbreak=↳\ 

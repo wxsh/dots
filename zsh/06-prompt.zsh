@@ -27,9 +27,9 @@ setprompt() {
   local HOST="%F{1}%M%f"
   local PWD="%F{4}$(collapse_pwd)%f"
   local TTY="%F{4}%y%f"
-  local EXIT="%(?..%F{202}%?%f)"
+  local EXIT="%(?..%F{197} %?%f)"
   local PRMPT="$(check_host) ${PWD}
-${EXIT} %F{202}»%f "
+${EXIT} %F{197}»%f "
 
   if [[ "${vcs_info_msg_0_}" == "" ]]; then
    PROMPT="$PRMPT"
